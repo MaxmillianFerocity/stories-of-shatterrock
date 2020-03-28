@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/Entities/Character/Tactical/StateMachine/States/Moving.gd" type="Script" id=1]
+[ext_resource path="res://src/Entities/Character/Tactical/StateMachine/States/Selected.gd" type="Script" id=2]
+[ext_resource path="res://src/Entities/Character/Tactical/CharacterTactical.gd" type="Script" id=3]
+[ext_resource path="res://assets/graphics/TestPlayer.png" type="Texture" id=4]
+[ext_resource path="res://src/Entities/Character/Tactical/PathFollower.gd" type="Script" id=5]
+[ext_resource path="res://src/Entities/Character/Tactical/StateMachine/StateMachine.gd" type="Script" id=6]
+[ext_resource path="res://src/Entities/Character/Tactical/StateMachine/States/Idle.gd" type="Script" id=7]
+[ext_resource path="res://src/Entities/Character/Tactical/PathMaker.gd" type="Script" id=8]
+
+
+[sub_resource type="Curve2D" id=1]
+bake_interval = 1.0
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[node name="CharacterTactical" type="Node"]
+script = ExtResource( 3 )
+
+[node name="PathMaker" type="Path2D" parent="."]
+curve = SubResource( 1 )
+script = ExtResource( 8 )
+
+[node name="PathFollower" type="PathFollow2D" parent="PathMaker"]
+rotate = false
+loop = false
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="PathMaker/PathFollower"]
+position = Vector2( 0, -25 )
+texture = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PathMaker/PathFollower"]
+position = Vector2( 0, -2 )
+input_pickable = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathMaker/PathFollower/StaticBody2D"]
+position = Vector2( 0.214294, -23.2519 )
+polygon = PoolVector2Array( -16.1926, -24.7563, -1.82576, -31.7959, 1.74166, -31.7959, 15.7761, -24.6969, 15.7926, 25.2776, 1.77429, 32.2469, -2.25547, 32.2469, -16.2821, 25.2099 )
+
+[node name="StateMachine" type="Node" parent="PathMaker/PathFollower"]
+script = ExtResource( 6 )
+
+[node name="Idle" type="Node" parent="PathMaker/PathFollower/StateMachine"]
+script = ExtResource( 7 )
+
+[node name="Selected" type="Node" parent="PathMaker/PathFollower/StateMachine"]
+script = ExtResource( 2 )
+
+[node name="Moving" type="Node" parent="PathMaker/PathFollower/StateMachine"]
+script = ExtResource( 1 )

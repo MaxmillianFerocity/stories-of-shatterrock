@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Entities/Character/Stats/StatManager.gd" type="Script" id=1]
+[ext_resource path="res://src/Entities/Character/BaseStat.gd" type="Script" id=2]
+
+[node name="StatManager" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Stamina" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="ActionPoints" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Morale" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Initiative" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Armor" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Dodge" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Damage" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Accuracy" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Critical" type="Node" parent="."]
+script = ExtResource( 2 )

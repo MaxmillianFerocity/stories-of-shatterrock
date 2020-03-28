@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Entities/Character/Character.gd" type="Script" id=1]
+[ext_resource path="res://src/Entities/Character/IdentityManager.gd" type="Script" id=2]
+[ext_resource path="res://src/Entities/Character/Stats/StatManager.gd" type="Script" id=3]
+[ext_resource path="res://src/Entities/Character/Attributes/AttributeManager.gd" type="Script" id=4]
+
+[node name="Character" type="Node"]
+script = ExtResource( 1 )
+
+[node name="IdentityManager" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="StatManager" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="AttributeManager" type="Node" parent="."]
+script = ExtResource( 4 )

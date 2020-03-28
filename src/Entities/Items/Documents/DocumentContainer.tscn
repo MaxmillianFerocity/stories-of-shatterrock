@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Entities/Items/Documents/DocumentContainer.gd" type="Script" id=1]
+[ext_resource path="res://src/Entities/Items/Documents/Tab.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Entities/Items/Documents/Page.tscn" type="PackedScene" id=3]
+
+
+
+[node name="DocumentContainer" type="Container"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -300.0
+margin_right = 250.0
+margin_bottom = 300.0
+script = ExtResource( 1 )
+type = "Tabbed"
+number_of_pages = 2
+
+[node name="LeftTabControl" type="VBoxContainer" parent="."]
+margin_left = -19.0
+margin_top = 2.0
+margin_right = 1.0
+margin_bottom = 602.0
+
+[node name="RightTabControl" type="VBoxContainer" parent="."]
+margin_left = 497.0
+margin_top = 2.0
+margin_right = 517.0
+margin_bottom = 602.0
+
+[node name="Tab" parent="RightTabControl" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_right = 20.0
+
+[node name="Tab2" parent="RightTabControl" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 4.0
+
+[node name="Tab3" parent="RightTabControl" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 8.0
+margin_right = 20.0
+margin_bottom = 8.0
+
+[node name="Page" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+visible = false
+margin_left = -250.0
+margin_right = 250.0
+rect_pivot_offset = Vector2( 250, 300 )
+type = "Cover"
+page_size = Vector2( 500, 300 )
+
+[node name="PageContainer" type="HBoxContainer" parent="Page"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 993.0
+margin_bottom = 593.0
+
+[node name="LeftPage" type="VBoxContainer" parent="Page/PageContainer"]
+margin_right = 487.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="VSeparator" parent="Page/PageContainer"]
+visible = false
+margin_left = 491.0
+margin_right = 495.0
+margin_bottom = 586.0
+
+[node name="RightPage" type="VBoxContainer" parent="Page/PageContainer"]
+visible = false
+margin_left = 499.0
+margin_right = 986.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+
+[node name="Page2" parent="." instance=ExtResource( 3 )]
+visible = false
+page_size = Vector2( 500, 300 )
+
+[editable path="Page"]

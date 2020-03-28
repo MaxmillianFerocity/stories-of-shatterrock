@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Modes/UI/Main Menu.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/TitleScreen.png" type="Texture" id=2]
+
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fade in"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.994296 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -493.5
+margin_top = -282.5
+margin_right = 493.5
+margin_bottom = 282.5
+custom_constants/margin_left = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+margin_right = 987.0
+margin_bottom = 565.0
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+editor/display_folded = true
+margin_right = 987.0
+margin_bottom = 565.0
+alignment = 2
+
+[node name="NewGameButton" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 473.0
+margin_right = 82.0
+margin_bottom = 493.0
+size_flags_horizontal = 0
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 497.0
+margin_right = 84.0
+margin_bottom = 517.0
+size_flags_horizontal = 0
+text = "Load Game"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 521.0
+margin_right = 63.0
+margin_bottom = 541.0
+size_flags_horizontal = 0
+text = "Options"
+
+[node name="QuitGameButton" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 545.0
+margin_right = 82.0
+margin_bottom = 565.0
+size_flags_horizontal = 0
+text = "Quit Game"
+
+[node name="FileDialog" type="FileDialog" parent="MarginContainer"]
+margin_right = 987.0
+margin_bottom = 565.0
+window_title = "Load Game"
+dialog_hide_on_ok = true
+mode_overrides_title = false
+mode = 0
+access = 2
+current_dir = "E:/SteamLibrary/steamapps/common/Godot Engine/Stories of Shatterrock"
+current_path = "E:/SteamLibrary/steamapps/common/Godot Engine/Stories of Shatterrock/"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
+root_node = NodePath("ColorRect")
+autoplay = "Fade in"
+"anims/Fade in" = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/AnimationPlayer"]
+margin_left = -1.0
+margin_top = -1.5
+margin_right = 1025.0
+margin_bottom = 601.5
+color = Color( 0, 0, 0, 0.989979 )
+[connection signal="pressed" from="MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LoadGameButton" to="." method="_on_LoadGameButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitGameButton" to="." method="_on_QuitGameButton_pressed"]
+[connection signal="animation_finished" from="MarginContainer/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
